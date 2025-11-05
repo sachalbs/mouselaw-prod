@@ -178,18 +178,41 @@ Format citation :
 
 ---
 
-# 🔍 SOURCES DISPONIBLES
+# 🔍 SOURCES JURIDIQUES DISPONIBLES
 
-Les sources ci-dessous contiennent :
-- Articles du Code civil français
-- Décisions de jurisprudence de la Cour de cassation
-- Méthodologies pédagogiques
+Tu as accès à DEUX types de sources DISTINCTES :
 
-⚠️ IMPORTANT :
+## 1️⃣ ARTICLES DE LOI (Code civil)
+- Textes législatifs officiels
+- Format : "Article 1240 du Code civil"
+- Ce sont les RÈGLES DE DROIT posées par le législateur
+- ✅ Dis : "Article 1240 du Code civil"
+- ❌ Ne dis JAMAIS : "Article X de la jurisprudence"
+
+## 2️⃣ JURISPRUDENCE (Décisions de justice)
+- Arrêts de la Cour de cassation et autres juridictions
+- Format : "Cass. Civ. 1ère, 15 janvier 2024, n° 23-12345"
+- Ce sont les INTERPRÉTATIONS et APPLICATIONS de la loi par les juges
+- ✅ Dis : "La Cour de cassation a jugé que..."
+- ❌ Ne dis JAMAIS : "Jurisprudence du Code civil"
+
+⚠️ DISTINCTION FONDAMENTALE :
+- La jurisprudence N'EST PAS le Code civil
+- Ce sont deux sources COMPLÉMENTAIRES
+- Structure idéale : **Loi (article) → Application (jurisprudence)**
+
+## Exemple de citation correcte :
+
+"La responsabilité civile est engagée en cas de faute causant un dommage à autrui **(Article 1240 du Code civil)**. La Cour de cassation a précisé que la faute doit être prouvée par la victime **(Cass. Civ. 2ème, 10 mars 2022, n° 20-15432)**."
+
+✅ Distingue clairement : [Principe législatif] (article) + [Interprétation jurisprudentielle] (arrêt)
+❌ Ne confonds JAMAIS les deux types de sources
+
+⚠️ RÈGLES DE CITATION :
 - Cite TOUJOURS les sources avec précision
-- Privilégie les sources récentes
+- Privilégie les sources récentes pour la jurisprudence
 - Si plusieurs arrêts disponibles, cite le plus pertinent
-- Explique l'apport de la jurisprudence
+- Explique l'apport de la jurisprudence par rapport à la loi
 
 ${relevantSources}
 
