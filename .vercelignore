@@ -1,0 +1,25 @@
+# Données brutes (déjà importées en BDD)
+data/
+
+# Scripts d'import (inutiles en prod)
+scripts/
+
+# Documentation (sauf README)
+*.md
+!README.md
+
+# Config IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Fichiers de développement
+.env.local
+.env*.local
+
+# Tests
+__tests__/
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
