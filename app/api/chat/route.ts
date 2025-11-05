@@ -96,6 +96,23 @@ export async function POST(req: NextRequest) {
       logger.info(`[AUTH] Conversation ${conversationId} ownership verified`);
     }
 
+    // 📝 CONVERSATION HISTORY: Fetch previous messages for context
+    let conversationHistory = '';
+    if (conversationId) {
+      const { data: previousMessages, error: messagesError } = await supabase
+        .from('messages')
+        .select('role, content')
+        .eq('conversation_id', conversationId)
+        .order('created_at', { ascending: true });
+
+      if (!messagesError && previousMessages && previousMessages.length > 0) {
+        conversationHistory = previousMessages
+          .map(m => `[${m.role}]: ${m.content}`)
+          .join('\n');
+        logger.debug(`[CONTEXT] Loaded ${previousMessages.length} previous messages for context`);
+      }
+    }
+
     // 1. Rechercher les sources pertinentes (articles + jurisprudence + méthodologies)
     logger.debug('\n═══════════════════════════════════════════════════════════');
     logger.debug('RECHERCHE DE SOURCES PERTINENTES');
@@ -133,7 +150,10 @@ export async function POST(req: NextRequest) {
     const context = formatSourcesForPrompt(sources);
 
     // 3. Créer le prompt pour Mistral avec intelligence contextuelle
-    const systemPrompt = buildSystemPrompt(context);
+    const systemPrompt = buildSystemPrompt(
+      context,
+      conversationHistory.length > 0 ? conversationHistory : undefined
+    );
     const userPrompt = message;
 
     logger.debug('Appel Mistral...');
