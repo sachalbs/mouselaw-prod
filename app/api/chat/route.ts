@@ -3,6 +3,7 @@ import { searchRelevantSources, formatSourcesForPrompt } from '@/lib/rag';
 import { createServerClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/logger';
 import { checkRateLimit } from '@/lib/rateLimit';
+import { buildSystemPrompt } from '@/lib/mistral/prompts';
 
 const mistralApiKey = process.env.MISTRAL_API_KEY!;
 
@@ -131,16 +132,9 @@ export async function POST(req: NextRequest) {
     // 2. Construire le contexte avec formatage ultra-strict
     const context = formatSourcesForPrompt(sources);
 
-    // 3. Créer le prompt pour Mistral
-    const systemPrompt = `Tu es Mouse Law, un assistant juridique expert en droit français.
-
-Tu réponds aux questions en te basant EXCLUSIVEMENT sur les sources juridiques fournies ci-dessous.
-
-${context}`;
-
-    const userPrompt = `Question : ${message}
-
-Réponds en citant EXACTEMENT les articles fournis ci-dessus. N'invente RIEN.`;
+    // 3. Créer le prompt pour Mistral avec intelligence contextuelle
+    const systemPrompt = buildSystemPrompt(context);
+    const userPrompt = message;
 
     logger.debug('Appel Mistral...');
 
